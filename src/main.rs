@@ -1,5 +1,3 @@
-use std::io::Read;
-
 use serenity::async_trait;
 use serenity::prelude::*;
 use serenity::model::channel::Message;
@@ -22,11 +20,8 @@ async fn main() {
         .group(&GENERAL_GROUP);
 
     // Login with a bot token from the environment
-    let mut token = std::fs::File::open("token.txt").unwrap();
-    let mut sdfsf:String = "".to_string();
-    token.read_to_string(&mut sdfsf).unwrap();
     let intents = GatewayIntents::non_privileged() | GatewayIntents::MESSAGE_CONTENT;
-    let mut client = Client::builder(sdfsf, intents)
+    let mut client = Client::builder("token", intents)
         .event_handler(Handler)
         .framework(framework)
         .await
