@@ -22,7 +22,7 @@ async fn main() -> std::io::Result<()>{
         .group(&GENERAL_GROUP);
 
     // Login with a bot token from the environment
-    let mut file = File::open("token.txt")?;
+    let mut file = File::open("token")?;
     let mut token = "".to_string();
     file.read_to_string(&mut token)?;
     let intents = GatewayIntents::non_privileged() | GatewayIntents::MESSAGE_CONTENT;
